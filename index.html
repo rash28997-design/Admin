@@ -14,35 +14,11 @@ here<!DOCTYPE html>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Login Screen -->
-    <div id="admin-login-screen" class="min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-xl p-6 border">
-            <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-2">
-                    <i class="fas fa-user-shield"></i>
-                </div>
-                <h1 class="text-xl font-bold">অ্যাডমিন প্যানেল লগইন</h1>
-            </div>
-            <form onsubmit="adminLogin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold mb-1">জিমেইল *</label>
-                    <input type="email" id="admin-email" required placeholder="admin43214@gmail.com" class="w-full border rounded-xl p-3 text-xs outline-none focus:ring-2 focus:ring-indigo-600">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold mb-1">পাসওয়ার্ড *</label>
-                    <input type="password" id="admin-pass" required placeholder="পাসওয়ার্ড দিন" class="w-full border rounded-xl p-3 text-xs outline-none focus:ring-2 focus:ring-indigo-600">
-                </div>
-                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl text-xs uppercase shadow-lg hover:bg-indigo-700 transition">লগইন করুন</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Dashboard -->
-    <div id="admin-dashboard" class="hidden min-h-screen pb-10">
+    <!-- Dashboard (Directly Visible without Login) -->
+    <div id="admin-dashboard" class="min-h-screen pb-10">
         <header class="bg-indigo-900 text-white shadow-md">
             <div class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <h1 class="font-bold text-base"><i class="fas fa-gauge text-orange-400 mr-2"></i>ই-শপ অ্যাডমিন ড্যাশবোর্ড</h1>
-                <button onclick="adminLogout()" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition"><i class="fas fa-sign-out-alt mr-1"></i> লগআউট</button>
             </div>
         </header>
 
@@ -137,28 +113,6 @@ here<!DOCTYPE html>
             orders = snapshot.val() ? Object.values(snapshot.val()) : [];
             loadAdminOrders();
         });
-
-        function adminLogin(e) {
-            e.preventDefault();
-            // এখানে পাসওয়ার্ড পরিবর্তন করে 'Eshop@Admin#2026' দেওয়া হয়েছে। আপনি চাইলে আপনার পছন্দমতো যেকোনো পাসওয়ার্ড বসিয়ে নিতে পারেন।
-            if(document.getElementById('admin-email').value === 'admin43214@gmail.com' && document.getElementById('admin-pass').value === 'Eshop@Admin#2026') {
-                localStorage.setItem('is_admin_logged', 'true');
-                document.getElementById('admin-login-screen').classList.add('hidden');
-                document.getElementById('admin-dashboard').classList.remove('hidden');
-            } else { alert('ভুল জিমেইল বা পাসওয়ার্ড!'); }
-        }
-
-        function adminLogout() {
-            localStorage.removeItem('is_admin_logged');
-            location.reload();
-        }
-
-        window.onload = function() {
-            if(localStorage.getItem('is_admin_logged') === 'true') {
-                document.getElementById('admin-login-screen').classList.add('hidden');
-                document.getElementById('admin-dashboard').classList.remove('hidden');
-            }
-        }
 
         function handleProductSubmit(e) {
             e.preventDefault();
