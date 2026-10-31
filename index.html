@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -140,7 +140,8 @@
 
         function adminLogin(e) {
             e.preventDefault();
-            if(document.getElementById('admin-email').value === 'admin43214@gmail.com' && document.getElementById('admin-pass').value === '0987654321@#৳%&*-+()') {
+            // এখানে পাসওয়ার্ড পরিবর্তন করে 'Eshop@Admin#2026' দেওয়া হয়েছে। আপনি চাইলে আপনার পছন্দমতো যেকোনো পাসওয়ার্ড বসিয়ে নিতে পারেন।
+            if(document.getElementById('admin-email').value === 'admin43214@gmail.com' && document.getElementById('admin-pass').value === 'Eshop@Admin#2026') {
                 localStorage.setItem('is_admin_logged', 'true');
                 document.getElementById('admin-login-screen').classList.add('hidden');
                 document.getElementById('admin-dashboard').classList.remove('hidden');
@@ -300,7 +301,7 @@
                                 <p><strong>৩. জেলা:</strong> ${ord.district || 'N/A'}</p>
                                 <p><strong>৪. থানা / উপজেলা:</strong> ${ord.thana || 'N/A'}</p>
                                 <p><strong>৫. ইউনিয়ন / ওয়ার্ড:</strong> ${ord.union || 'N/A'}</p>
-                                <p><strong>৬. গ্রাম / মহcomputed / রোড:</strong> ${ord.village || ord.address || 'N/A'}</p>
+                                <p><strong>৬. গ্রাম / মহডা / রোড:</strong> ${ord.village || ord.address || 'N/A'}</p>
                                 <p><strong>৭. পেমেন্ট মেথড:</strong> <span class="uppercase font-bold text-indigo-600">${ord.payment || 'COD'}</span></p>
                                 <p><strong>৮. ট্রানজ্যাকশন ID (TrxID):</strong> <span class="font-mono font-bold bg-yellow-100 px-1 rounded">${ord.trx || 'N/A'}</span></p>
                             </div>
